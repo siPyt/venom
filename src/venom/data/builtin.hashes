@@ -1,0 +1,3 @@
+# Venom built-in SHA-256 blocklist: <sha256> <name>
+# EICAR standard antivirus test file (68-byte canonical form).
+275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f Test.EICAR

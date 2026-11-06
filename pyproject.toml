@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "venom-av"
+version = "0.1.0"
+description = "Open-source, cross-platform malware scanner built on YARA-X and ClamAV"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Venom contributors" }]
+keywords = ["antivirus", "malware", "scanner", "yara", "clamav", "security"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = [
+    "yara-x>=1.0",
+    "cryptography>=42",
+    "platformdirs>=4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+venom = "venom.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/siPyt/venom"
+Issues = "https://github.com/siPyt/venom/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/venom"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
